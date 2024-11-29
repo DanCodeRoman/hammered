@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HAMMERED</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main Menu -->
+  <div id="main-menu">
+    <h1 id="game-title">HAMMERED</h1>
+    <p id="credit">Made by DanCodeRoman</p>
+    <button id="start-button">Start</button>
+  </div>
+
+  <!-- Game Screen -->
+  <div id="game-screen" style="display: none;">
+    <canvas id="game-canvas"></canvas>
+    <div id="instructions">
+      <p>You must nail this painting right into the middle.</p>
+    </div>
+    <div id="game-over" class="hidden">
+      <p>Game Over!</p>
+      <button id="restart-button">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
