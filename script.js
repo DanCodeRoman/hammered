@@ -35,13 +35,15 @@ startButton.addEventListener("click", startGame);
 restartButton.addEventListener("click", restartGame);
 
 // Mouse Move: Nail Follows Cursor
+// Mouse Move: Nail Follows Cursor
 canvas.addEventListener("mousemove", (e) => {
   if (!isGameOver) {
-    // Adjust the position of the nail image to align it with the cursor
-    nail.x = e.clientX - canvas.offsetLeft - nailImage.width / 2;
-    nail.y = e.clientY - canvas.offsetTop - nailImage.height / 2;
+    // Adjust the position so the nail is centered more accurately on the cursor
+    nail.x = e.clientX - canvas.offsetLeft - nail.width / 2 - 440; // Subtract 3 more pixels to shift it left
+    nail.y = e.clientY - canvas.offsetTop - nail.height / 2 + 15;
   }
 });
+
 
 // Nail the Painting
 canvas.addEventListener("click", () => {
@@ -84,7 +86,7 @@ function animateGame() {
   ctx.drawImage(painting.img, painting.x, painting.y, painting.width, painting.height);
 
   // Draw the nail image (instead of drawing a circle)
-  ctx.drawImage(nailImage, nail.x, nail.y);
+  ctx.drawImage(nailImage, nail.x, nail.y, nail.width, nail.height);
 
   if (isGameOver) {
     triggerGameOver();
