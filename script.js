@@ -11,7 +11,7 @@ const instructions = document.getElementById("instructions");
 canvas.width = 800;
 canvas.height = 600;
 
-let nail = { x: 0, y: 0, width: 20, height: 20, placed: false };
+let nail = { x: 0, y: 0, width: 20, height: 50, placed: false };
 let painting = { x: 0, y: 0, width: 300, height: 400, img: null };
 let paintingTarget = { x: canvas.width / 2 - 150, y: 100 }; // Target center position
 let marginForError = 3;
@@ -22,6 +22,11 @@ const paintingUrls = [
   "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3BkZm1hNi1wZGZhbW91c3BhaW50aW5nMDAyMDAxLWltYWdlLTgtam9iNTgyLTFfMS5qcGc.jpg",
   "https://tonkawritingcenter.wordpress.com/wp-content/uploads/2020/02/people.png?w=264&h=319"
 ];
+
+// Nail Image URL
+const nailImageUrl = "https://static.vecteezy.com/system/resources/previews/020/050/846/large_2x/nail-isolated-on-transparent-background-free-png.png";
+const nailImage = new Image();
+nailImage.src = nailImageUrl;
 
 // Start the Game
 startButton.addEventListener("click", startGame);
@@ -77,12 +82,8 @@ function animateGame() {
   // Draw the painting
   ctx.drawImage(painting.img, painting.x, painting.y, painting.width, painting.height);
 
-  // Draw the nail
-  ctx.beginPath();
-  ctx.arc(nail.x, nail.y, nail.width / 2, 0, Math.PI * 2);
-  ctx.fillStyle = nail.placed ? "black" : "brown";
-  ctx.fill();
-  ctx.closePath();
+  // Draw the nail image (instead of drawing a circle)
+  ctx.drawImage(nailImage, nail.x, nail.y, nail.width, nail.height);
 
   if (isGameOver) {
     triggerGameOver();
